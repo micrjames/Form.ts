@@ -1,0 +1,85 @@
+html {
+	font-size: 100%;
+	box-sizing: border-box;
+}
+
+*, *::before, *::after {
+	box-sizing: inherit;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+    font-size: 2rem;
+	background-color: lightgray;
+}
+
+#container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	height: 100vh;
+}
+
+a:link {
+	text-decoration: none;
+	color: inherit;
+	border: 1px solid black;
+	padding: 5px;
+}
+a:hover {
+	background-color: hsl(0, 0%, 15%);
+}
+#form-row {
+   width: 100%;
+}
+label {
+   display: inline-block;
+   font-size: 1.5rem;
+}
+label::after {
+   content: '>';
+}
+input[type=text] {
+   width: 40%;
+   outline: none;
+   border: none;
+   border-bottom: 1px solid black;
+   font-size: 1rem;
+   padding-top: 0.5rem;
+   caret-color: black;
+   background: transparent;
+   margin-left: 1.75rem;
+   transition: all 0.5s ease-in-out;
+}
+input[type=text]:focus {
+   transform: scaleX(1.45);
+}
+input[type=text]:invalid {
+	border-bottom-color: red;
+}
+input[type=text]:invalid ~ .invalid-input {
+   display: block;
+   font-style: italic;
+   color: red;
+}
+button {
+   position: relative;
+   left: 50%;
+   display: inline-block;
+   width: 50%;
+   transform: translateX(-50%);
+   margin-top: 1.25rem;
+   font-size: 1.25rem;
+   background-color: lightgrey;
+   cursor: pointer;
+}
+.red {
+   color: red;
+}
+.invalid-input {
+   display: none;
+   font-size: 1rem;
+   list-style-position: inside;
+}

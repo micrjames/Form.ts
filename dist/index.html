@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		 <meta charset="UTF-8">
+		 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		 <link rel="stylesheet" href="../css/main.css">
+
+		 <title>Site Template</title>
+	</head>
+	<body>
+	   <div id="container">
+		  <h1> Welcome </h1>
+		 <form id="login-form" action="/login" method="POST">
+			<fieldset>
+			   <legend>Login</legend>
+			   <div class="form-row">
+				  <label for="name"> enter name </label>
+				  <input
+					 type="text"
+					 name="name"
+					 pattern="^[a-zA-Z]+(?:\s[a-zA-Z]+)?$"
+					 placeholder="e.g. John Hancock"
+					 autocomplete="false"
+				  />
+				  <ul class="invalid-input">
+					 <li>Must contain at least two names (first and last).</li>
+					 <li>Must contain a space.</li>
+				  </ul>
+			   </div>
+			   <button type="submit" class="btn"> Submit </button>
+			</fieldset>
+		 </form>
+	   </div>
+	</body>
+</html>
