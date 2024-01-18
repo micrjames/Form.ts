@@ -16,7 +16,23 @@ describe("Form.", () => {
 	  document = dom.window.document;
 	  login = new Form(document.forms[0]);
    });
-   test("Should be the form.", () => {
-	  expect(login.form).toBeInTheDocument();
+   describe("A Form in the document.", () => {
+	  test("Should be in the document.", () => {
+		 expect(login.form).toBeInTheDocument();
+	  });
+   });
+   describe("A Form with the correct structure.", () => {
+	  test.todo("Should have more than one input.");
+	  test.todo("Should have as many inputs as name attributes.");
+	  test.todo("Should have name attributes with matching values.");
+	  test.todo("Should have text inputs of matching types.");
+	  test.todo("Should have a submit button.");
+   });
+   describe("A Form with the correct output.", () => {
+	  test.todo("Should not output an empty object.");
+	  test.todo("Should output as many fields as there are inputs.");
+	  test.todo("Should not have any fields that are empty.");
+	  test.todo("Should output the data as an object.");
+	  test.todo("Should output as an object of name/value pairs.");
    });
 });
