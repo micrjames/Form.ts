@@ -41,7 +41,7 @@ label {
 label::after {
    content: '>';
 }
-input[type=text] {
+input {
    width: 40%;
    outline: none;
    border: none;
@@ -53,13 +53,13 @@ input[type=text] {
    margin-left: 1.75rem;
    transition: all 0.5s ease-in-out;
 }
-input[type=text]:focus {
+input:focus {
    transform: scaleX(1.45);
 }
-input[type=text]:invalid {
+input:invalid {
 	border-bottom-color: red;
 }
-input[type=text]:invalid ~ .invalid-input {
+input:invalid ~ .invalid-input {
    display: block;
    font-style: italic;
    color: red;

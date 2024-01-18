@@ -10,10 +10,10 @@
 	</head>
 	<body>
 	   <div id="container">
-		  <h1> Welcome </h1>
-		 <form id="login-form" action="/login" method="POST">
+		 <h1> Welcome </h1>
+		 <form id="signup-form" action="/signup" method="POST">
 			<fieldset>
-			   <legend>Login</legend>
+			   <legend>Signup</legend>
 			   <div class="form-row">
 				  <label for="name"> enter name </label>
 				  <input
@@ -26,6 +26,66 @@
 				  <ul class="invalid-input">
 					 <li>Must contain at least two names (first and last).</li>
 					 <li>Must contain a space.</li>
+				  </ul>
+			   </div> 
+			   <div class="form-row">
+				  <label for="name"> enter username </label>
+				  <input
+					 type="text"
+					 name="username"
+					 pattern="^[a-zA-Z][a-zA-Z0-9]{4,}$"
+					 placeholder="e.g. jhancock"
+					 autocomplete="false"
+				  />
+				  <ul class="invalid-input">
+					<li>Must start with a letter (lowercase or capital).</li>
+					<li>Must have at least five character.</li>
+				  </ul>
+			   </div> 
+			   <div class="form-row">
+				  <label for="password"> enter a password </label>
+				  <input
+					 type="password"
+					 name="password"
+					 pattern="^(?!.*[#!])(?=.*[A-Z])(?=.*[0-9]).{8,}$"
+					 placeholder="e.g. p4sswOrd"
+					 autocomplete="false"
+				  />
+				  <ul class="invalid-input">
+					 <li>Must have more than seven characters.</li>
+					 <li>Must have at least one digit.</li>
+					 <li>Must contain at least uppercase character.</li>
+				  </ul>
+			   </div>
+			   <div class="form-row">
+				  <label for="confirm_password"> confirm your password </label>
+				  <input
+					 type="password"
+					 name="password"
+					 pattern="^(?!.*[#!])(?=.*[A-Z])(?=.*[0-9]).{8,}$"
+					 placeholder="e.g. p4sswOrd"
+					 autocomplete="false"
+				  />
+				  <ul class="invalid-input">
+					 <li>Must have more than seven characters.</li>
+					 <li>Must have at least one digit.</li>
+					 <li>Must contain at least uppercase character.</li>
+				  </ul>
+			   </div>
+			   <div class="form-row">
+				  <label for="email"> enter an email address</label>
+				  <input
+					 type="email"
+					 name="email"
+					 pattern="^\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*\.([a-z]{2,4}|\d+)$"
+					 placeholder="e.g. user@hotmail.com"
+					 autocomplete="false"
+				  />
+				  <ul class="invalid-input">
+					  <li>Must contain at least one word character.</li>
+					  <li>May, then, contain one of the following: +, ., a word character, or a hyphen.</li>
+					  <li>Must, then, contain the @ symbol.</li>
+					  <li>Then, finally, must contain a series of extension characters following a . symbol.</li>
 				  </ul>
 			   </div>
 			   <button type="submit" class="btn"> Submit </button>

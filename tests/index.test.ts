@@ -22,9 +22,16 @@ describe("Form.", () => {
 	  });
    });
    describe("A Form with the correct structure.", () => {
-	  test.todo("Should have more than one input.");
-	  test.todo("Should have as many inputs as name attributes.");
-	  test.todo("Should have name attributes with matching values.");
+	  const input_names = ["name", "username", "password", "confirm_password", "email"];
+	  test("Should have more than one input.", () => {
+		 expect(login.inputs).toHaveLength(5);
+	  });
+	  test("Should have as many inputs as name attributes.", () => {
+		 expect(login.inputs).toHaveLength(input_names.length);
+	  });
+	  test("Should have name attributes with matching values.", () => {
+		 expect(login.inputsNames).toHaveLength(input_names.length);
+	  });
 	  test.todo("Should have text inputs of matching types.");
 	  test.todo("Should have a submit button.");
    });
