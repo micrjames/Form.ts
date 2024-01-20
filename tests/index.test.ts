@@ -33,7 +33,9 @@ describe("Form.", () => {
 		 expect(login.inputsNames).toHaveLength(input_names.length);
 	  });
 	  test.todo("Should have text inputs of matching types.");
-	  test.todo("Should have a submit button.");
+	  test("Should have a submit button.", () => {
+		 expect(login.submitBtn).toBeInTheDocument();
+	  });
    });
    describe("A Form with the correct output.", () => {
 	  test.todo("Should not output an empty object.");
