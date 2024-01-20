@@ -32,7 +32,6 @@ describe("Form.", () => {
 	  test("Should have name attributes with matching values.", () => {
 		 expect(login.inputsNames).toHaveLength(input_names.length);
 	  });
-	  test.todo("Should have text inputs of matching types.");
 	  test("Should have a submit button.", () => {
 		 expect(login.submitBtn).toBeInTheDocument();
 	  });

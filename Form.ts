@@ -34,9 +34,10 @@ export class Form {
    }
    get submitBtn(): HTMLButtonElement {
 	  let submitBtn: Element;
-	  // there can only be one "submit" button in a form.
-	  if(this.btns.length == 1 && this.btns[0].type == "submit")
-		 submitBtn = this.btns[0];
+	  // assumes there is only one submit button per form
+	  for(let i = 0; i < this.btns.length; i++)
+		 if(this.btns[0].type == "submit")
+			submitBtn = this.btns[i];
 	  return submitBtn as HTMLButtonElement;
    }
    get values(): (string | number)[] {
