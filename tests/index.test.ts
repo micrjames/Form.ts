@@ -3,18 +3,30 @@ const { JSDOM } = jsdom;
 const fs = require('fs');
 const path = require('path');
 require('@testing-library/jest-dom');
+import { fireEvent } from '@testing-library/dom';
 
 const { Form } = require("../Form");
+const { data } = require("../utils/utils");
 
 describe("Form.", () => {
    let dom: typeof JSDOM;
    let document: Document;
    let login: typeof Form;
+   let submitBtn: HTMLButtonElement;
+   let input_names: string[];
    beforeAll(() => {
 	  const html = fs.readFileSync(path.resolve(__dirname, "..", "dist", 'index.html'), 'utf8');
 	  dom = new JSDOM(html, {runScripts: 'dangerously'});
 	  document = dom.window.document;
-	  login = new Form(document.forms[0]);
+	  input_names = ["name", "username", "password", "confirm_password", "email"];
+	  login = new Form(document.forms[0], data => {
+	     console.log(data);
+	  });
+	  submitBtn = login.submitBtn;
+	  input_names.forEach((input_name, i) => {
+		 login.inputs[i].value = data[input_name];
+	  });
+	  fireEvent.click(submitBtn);
    });
    describe("A Form in the document.", () => {
 	  test("Should be in the document.", () => {
@@ -22,7 +34,6 @@ describe("Form.", () => {
 	  });
    });
    describe("A Form with the correct structure.", () => {
-	  const input_names = ["name", "username", "password", "confirm_password", "email"];
 	  test("Should have more than one input.", () => {
 		 expect(login.inputs).toHaveLength(5);
 	  });
@@ -33,7 +44,7 @@ describe("Form.", () => {
 		 expect(login.inputsNames).toHaveLength(input_names.length);
 	  });
 	  test("Should have a submit button.", () => {
-		 expect(login.submitBtn).toBeInTheDocument();
+		 expect(submitBtn).toBeInTheDocument();
 	  });
 	  test("Should have only one submit button.", () => {
 		 let submitBtns: HTMLButtonElement[] = [];
@@ -44,7 +55,8 @@ describe("Form.", () => {
 	  });
    });
    describe("A Form with the correct output.", () => {
-	  test.todo("Should not output an empty object.");
+	  test("Should not output an empty object.", () => {
+	  });
 	  test.todo("Should output as many fields as there are inputs.");
 	  test.todo("Should not have any fields that are empty.");
 	  test.todo("Should output the data as an object.");

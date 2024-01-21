@@ -1,9 +1,12 @@
+const { dataObj } = require("./utils/utils");
+
 export class Form {
    private formEl: HTMLFormElement;
    private fieldInputs: HTMLFormElement[];
    private submitButton: HTMLButtonElement;
+   private _data: typeof dataObj = {};
    
-   constructor(form: HTMLFormElement, cb) {
+   constructor(form: HTMLFormElement, cb: (data: typeof dataObj) => void) {
 	  this.formEl = form;
 	  this.fieldInputs = this.inputs;
 	  this.submitButton = this.submitBtn;
@@ -11,7 +14,10 @@ export class Form {
 	  this.formEl.addEventListener("submit", event => {
 		 event.preventDefault();
 
-		 cb();
+		 this.inputsNames.forEach((name, i) => {
+			this._data[name] = this.values[i];
+		 });
+		 cb(this._data);
 	  });
    }
    private formElements(type: string): Element[] {
@@ -50,6 +56,9 @@ export class Form {
 	  return this.fieldInputs.map(fieldInput => {
 		 return fieldInput.attributes.getNamedItem("name")?.value;
 	  });
+   }
+   get data(): typeof dataObj {
+      return this._data;
    }
    get form(): HTMLFormElement {
 	  return this.formEl;
