@@ -35,6 +35,13 @@ describe("Form.", () => {
 	  test("Should have a submit button.", () => {
 		 expect(login.submitBtn).toBeInTheDocument();
 	  });
+	  test("Should have only one submit button.", () => {
+		 let submitBtns: HTMLButtonElement[] = [];
+		 for(let i = 0; i < login.btns.length; i++)
+		 	if(login.btns[i].type == "submit")
+			   submitBtns = [...submitBtns, login.btns[i]];
+		 expect(submitBtns.length == 1).toBeTruthy();
+	  });
    });
    describe("A Form with the correct output.", () => {
 	  test.todo("Should not output an empty object.");
