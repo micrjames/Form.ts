@@ -42,7 +42,7 @@ export class Form {
 	  let submitBtn: Element;
 	  // assumes there is only one submit button per form
 	  for(let i = 0; i < this.btns.length; i++)
-		 if(this.btns[0].type == "submit")
+		 if(this.btns[i].type == "submit")
 			submitBtn = this.btns[i];
 	  return submitBtn as HTMLButtonElement;
    }
