@@ -19,6 +19,10 @@ export class Form {
 		 });
 		 cb(this._data);
 	  });
+	  if(this.resetBtn)
+		 this.resetBtn.addEventListener("click", () => {
+			this.reset();
+		 });
    }
    private formElements(type: string): Element[] {
 	  const fieldEls: HTMLFormControlsCollection = this.formEl.elements;
@@ -38,13 +42,21 @@ export class Form {
 	  btns = this.formElements("BUTTON") as HTMLButtonElement[];
 	  return btns;
    }
-   get submitBtn(): HTMLButtonElement {
-	  let submitBtn: Element;
-	  // assumes there is only one submit button per form
+   private whichBtn(type: string):HTMLButtonElement {
+	  let button: HTMLButtonElement;
 	  for(let i = 0; i < this.btns.length; i++)
-		 if(this.btns[i].type == "submit")
-			submitBtn = this.btns[i];
-	  return submitBtn as HTMLButtonElement;
+		 if(this.btns[i].type == type)
+			button = this.btns[i];
+	  return button as HTMLButtonElement;
+   }
+   reset() {
+	  this.form.reset();
+   }
+   get resetBtn(): HTMLButtonElement {
+	  return this.whichBtn("reset");
+   }
+   get submitBtn(): HTMLButtonElement {
+	  return this.whichBtn("submit");
    }
    get values(): (string | number)[] {
 		 let values: (string | number)[] = [];
