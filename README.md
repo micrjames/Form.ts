@@ -22,11 +22,14 @@ This project is fairly simple from the point of view of the user. The user only 
 * No need to understand the structure of the form.
 * Pass in the necessary form from the dom.
 * Pass in a callback function to manipulate the data in some way.
+* No need to write handlers for the reset and submit buttons.
+* Can get the data from the form automatically.
+* Reset the form on click the reset button.
 
 ## Setup
 Import the class into your project in the usual way.
 ```
-const { Form } = require("Form/Form");
+const { Form } = require("../Form/Form");
 ```
 Get the form from the DOM by its name, like:
 ```
@@ -44,6 +47,7 @@ const form = new Form(my_form, data => {
   // use the data here
 });
 ```
+Within the constructor, a submit event listener is added to the form.
 It is possible to gain access to the various components that are returned from the form. For example, in testing the form functionality of a project, it would be necessary to be able to test the components pof a particular form.
 
 We can access the underlying form that was passed to the constructor through the getter method. A use case, here, might be one in which we don't know the particular configuration of the dom elements.
@@ -61,6 +65,11 @@ As there should be only one submit button for any form, we can find that element
 const submitBtn = form.submitBtn;
 ```
 , which is just a special instance of one of the buttons made available to us that is constituent of the form.
+
+And a method is available so that you can reset the form at any time.
+```
+form.reset();
+```
 The entire purpose of creating this class was to get an easy way to access the data submitted by the form. As such, we can access the name/value pairs that constitute the data be outputted. There exist getter methods for each of the names and values that come from the inputs that make up the data. These arrays are simply string arrays containing those elements.
 ```
 const names = form.inputsNames;
