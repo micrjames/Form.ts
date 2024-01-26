@@ -65,8 +65,7 @@ As there should be only one submit button for any form, we can find that element
 const submitBtn = form.submitBtn;
 ```
 , which is just a special instance of one of the buttons made available to us that is constituent of the form.
-
-And a method is available so that you can reset the form at any time.
+Also, we have access to the reset button, but, of course, this will mainly be used for testing purposes.mAnd a method is available so that you can reset the form at any time.
 ```
 form.reset();
 ```
