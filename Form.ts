@@ -19,10 +19,6 @@ export class Form {
 		 });
 		 cb(this._data);
 	  });
-	  if(this.resetBtn)
-		 this.resetBtn.addEventListener("click", () => {
-			this.reset();
-		 });
    }
    private formElements(type: string): Element[] {
 	  const fieldEls: HTMLFormControlsCollection = this.formEl.elements;
@@ -51,9 +47,6 @@ export class Form {
    }
    reset() {
 	  this.form.reset();
-   }
-   get resetBtn(): HTMLButtonElement {
-	  return this.whichBtn("reset");
    }
    get submitBtn(): HTMLButtonElement {
 	  return this.whichBtn("submit");
