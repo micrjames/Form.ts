@@ -48,6 +48,9 @@ export class Form {
    reset() {
 	  this.form.reset();
    }
+   get resetBtn(): HTMLButtonElement {
+	  return this.whichBtn("reset");
+   }
    get submitBtn(): HTMLButtonElement {
 	  return this.whichBtn("submit");
    }
