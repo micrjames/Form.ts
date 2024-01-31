@@ -3,12 +3,14 @@ const { dataObj } = require("./utils/utils");
 export class Form {
    private formEl: HTMLFormElement;
    private fieldInputs: HTMLFormElement[];
+   private _textareas: HTMLTextAreaElement[];
    private submitButton: HTMLButtonElement;
    private _data: typeof dataObj = {};
    
    constructor(form: HTMLFormElement, cb: (data: typeof dataObj) => void) {
 	  this.formEl = form;
 	  this.fieldInputs = this.inputs;
+          this._textareas = this.textareas;
 	  this.submitButton = this.submitBtn;
 
 	  this.formEl.addEventListener("submit", event => {
@@ -16,6 +18,9 @@ export class Form {
 
 		 this.inputsNames.forEach((name, i) => {
 			this._data[name] = this.values[i];
+		 });
+                 this.textareasNames.forEach((name, i) => {
+			this._data[name] = this._textareas[i].value;
 		 });
 		 cb(this._data);
 	  });
@@ -32,6 +37,15 @@ export class Form {
    get inputs(): HTMLFormElement[] {
 	  let fieldInputs: Element[] = this.formElements("INPUT");
 	  return fieldInputs as HTMLFormElement[];
+   }
+   get textareas(): HTMLTextAreaElement[] {
+	  let textareas: Element[] = this.formElements("TEXTAREA");
+	  return textareas as HTMLTextAreaElement[];
+   }
+   get textareasNames(): string[] {
+	  return this._textareas.map(textarea => {
+		 return textarea.attributes.getNamedItem("name")?.value;
+	  });
    }
    get btns(): HTMLButtonElement[] {
 	  let btns: HTMLButtonElement[] = [];
