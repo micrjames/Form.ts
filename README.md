@@ -91,4 +91,4 @@ This project may be updated with further operations and other supporting functio
 There is always room for improvement in any coding project as skills and possibilities for further functionality may come along.
 
 ## Contact
-Feel free to contact me @micrjamesjr on twitter or on github @micrjames
+Feel free to contact me @michaelrjamesjr on twitter
