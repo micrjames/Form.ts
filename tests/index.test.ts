@@ -5,8 +5,8 @@ const path = require('path');
 require('@testing-library/jest-dom');
 import { fireEvent } from '@testing-library/dom';
 
-const { Form } = require("../Form");
-const { data } = require("../utils/utils");
+import { Form } from "../Form";
+import { data } from "../utils/utils";
 
 describe("Form.", () => {
    let dom: typeof JSDOM;

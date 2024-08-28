@@ -1,13 +1,13 @@
-const { dataObj } = require("./utils/utils");
+import { dataObj } from "./utils/utils";
 
 export class Form {
    private formEl: HTMLFormElement;
    private fieldInputs: HTMLFormElement[];
    private _textareas: HTMLTextAreaElement[];
    private submitButton: HTMLButtonElement;
-   private _data: typeof dataObj = {};
+   private _data: dataObj = {};
    
-   constructor(form: HTMLFormElement, cb: (data: typeof dataObj) => void) {
+   constructor(form: HTMLFormElement, cb: (data: dataObj) => void) {
 	  this.formEl = form;
 	  this.fieldInputs = this.inputs;
           this._textareas = this.textareas;
@@ -19,7 +19,7 @@ export class Form {
 		 this.inputsNames.forEach((name, i) => {
 			this._data[name] = this.values[i];
 		 });
-                 this.textareasNames.forEach((name, i) => {
+         this.textareasNames.forEach((name, i) => {
 			this._data[name] = this._textareas[i].value;
 		 });
 		 cb(this._data);
@@ -79,7 +79,7 @@ export class Form {
 		 return fieldInput.attributes.getNamedItem("name")?.value;
 	  });
    }
-   get data(): typeof dataObj {
+   get data(): dataObj {
       return this._data;
    }
    get form(): HTMLFormElement {

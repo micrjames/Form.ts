@@ -1,8 +1,8 @@
 export interface dataObj {
-   [prop: (string | number)]: string;
+   [prop: (string | number)]: (string | number);
 }
 
-exports.data = {
+export const data = {
    name: 'John Hancock',
    username: 'jhancock',
    password: 'p4sswOrd',
