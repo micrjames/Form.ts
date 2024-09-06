@@ -7,10 +7,10 @@ export class Form {
    private submitButton: HTMLButtonElement;
    private _data: dataObj = {};
    
-   constructor(form: HTMLFormElement, cb: (data: dataObj) => void) {
+   constructor(form: HTMLFormElement, cb: (data: dataObj, fieldInputs: HTMLFormElement[], submitButton: HTMLButtonElement) => void) {
 	  this.formEl = form;
 	  this.fieldInputs = this.inputs;
-          this._textareas = this.textareas;
+      this._textareas = this.textareas;
 	  this.submitButton = this.submitBtn;
 
 	  this.formEl.addEventListener("submit", event => {
@@ -22,7 +22,7 @@ export class Form {
          this.textareasNames.forEach((name, i) => {
 			this._data[name] = this._textareas[i].value;
 		 });
-		 cb(this._data);
+		 cb(this._data, this.fieldInputs, this.submitButton);
 	  });
    }
    private formElements(type: string): Element[] {

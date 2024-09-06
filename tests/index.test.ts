@@ -11,7 +11,7 @@ import { data } from "../utils/utils";
 describe("Form.", () => {
    let dom: typeof JSDOM;
    let document: Document;
-   let login: typeof Form;
+   let login: Form;
    let submitBtn: HTMLButtonElement;
    let input_names: string[];
    beforeAll(() => {
